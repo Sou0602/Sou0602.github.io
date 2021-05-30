@@ -1,5 +1,6 @@
 
 function [x1,y1,x2,y2]=CC(P1, P2, r, o)
+%CC - To generate collision cones for an agent - obstacle pair
 P = P1-P2;
 d2 = dot(P,P);
 Q0 = P2+r^2/d2*P;
