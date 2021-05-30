@@ -4,3 +4,5 @@ This project involves a trajectory generation and planning approach for multi-ro
 The trajectories are generated using cubic spline clothoids between every two way points and Optimal Reciprocal Collision Avoidance ensures collision free motion.
 
 ## Introduction
+
+Use the run_nh.m file to run the simulation. Sample configurations are provided at the start to get started with the simulation.
