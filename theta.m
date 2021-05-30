@@ -1,4 +1,8 @@
 function an = theta(params,p)
+% theta - calculating current orientation from the polynomial at sf
+%
+% Syntax: an = theta(params,p)
+%
         sf = p(5);
         a = a3(p);
         b = a2(p);

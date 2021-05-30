@@ -1,5 +1,8 @@
 function [controlsmooth,table] = getcontrolsmooth_cs(agent)
-%Control Smoothness for Cubic Spiral Trajectory
+%
+%Control Smoothness for Cubic Spiral Trajectory - comparison purpose
+%
+% Syntax : [controlsmooth,table] = getcontrolsmooth_cs(agent)
 veldata = agent.VelData;
 
 table = zeros(floor(size(veldata,1)/4)-1,1);

@@ -1,4 +1,8 @@
 function an = y_fren(params,p,n)
+% x-fren - calculating current y from the polynomial using fresnel integral
+%
+% Syntax: an = y_fren(params,p)
+%  
         a = a3(p);
         b = a2(p);
         c = a1(p);

@@ -1,4 +1,8 @@
 function [normdis,normpoints] = getnorm(agent)
+% normdis - Normal distance from current position to the line joining start to goal position
+%
+% Syntax: [normdis,normpoints] = getnorm(agent)
+%
 path = agent.path;
 normdis = zeros(size(path,1),1);
 normpoints = zeros(size(path,1),2);

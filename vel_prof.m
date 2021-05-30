@@ -34,5 +34,14 @@ function [v,w,coeffi]=vel_prof(agent,goal_pos,n)
     cur=coeffi(4)*(s_cur.^3) + coeffi(3)*(s_cur.^2) + coeffi(2)*s_cur + coeffi(1);
     v=vel*ones(1,length(X));
     w=vel*cur;
-   
+    
+    %
+    for i = 1:length(w)
+        if w(i)>0 && w(i) > 1.1
+           w(i) = 1.1;
+        elseif w(i)<0 && w(i) < -1.1
+            w(i) = -1.1;
+        end
+    end
+   %}
 end

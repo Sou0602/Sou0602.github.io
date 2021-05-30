@@ -1,4 +1,5 @@
-function [c, ceq] = getConstraints_orca(agent, obstacles, control, dt)
+function [c, ceq] = getConstraints_orca(agents, obstacles, control,m, dt)
+agent = agents(m);
 %getConstraints - Description
 %
 % Syntax: [c ceq] = getConstraints(agent, obstacles)
@@ -7,15 +8,17 @@ function [c, ceq] = getConstraints_orca(agent, obstacles, control, dt)
     ceq = [];
     
     % Time horizon
-    tau = 0.8 * 2;    
+    tau = 0.8*2 ;    
     for i = 1:length(obstacles)
+        k = str2double(obstacles(i));
+        obstacle = agents(k);
         % Refer the paper for explanation on these terms
-        vRel = agent.velocity - obstacles(i).velocity;
-        vAb = agent.velocity + obstacles(i).velocity;
-        pAb = ( -agent.position + obstacles(i).position)/tau;
+        vRel = agent.velocity - obstacle.velocity;
+        vAb = agent.velocity + obstacle.velocity;
+        pAb = ( -agent.position + obstacle.position)/tau;
         
         % Finding pAb perpendicular
-        r = 2/tau ;
+        r = 4.4*agent.radius/ tau  ;
         l = abs(sqrt(sum(pAb.^2) - r^2));
 
         pAblen = sqrt(sum(pAb.^2));

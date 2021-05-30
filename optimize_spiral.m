@@ -1,9 +1,12 @@
 function an = optimize_spiral(params)
+% optimize_spiral - Optimisation to find the co-efficients of the cubic spiral polynomial 
+%
+% Syntax: an = optimize_spiral(params)
+%
+
         %cost=@(k) objec(params,k);
         
         cost=@(p) (x_fren(params,p,1000)-params.xf)^2 + (y_fren(params,p,1000)-params.yf)^2 +  1*(theta(params,p)-params.thetaf)^2;
-        
-        
         
         sf_0 = norm([params.xf-params.xi, params.yf-params.yi]);
         constraints=[];

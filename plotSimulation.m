@@ -9,14 +9,33 @@ function plotSimulation(agents, counter, dt, axisLimits, save)
     for i = 1:length(agents)
         faceColor = [0 170 255] / 255;
         lineColor = [135 135 135] / 255;
+        %{
+        if (i == 3 && counter >= 23 && counter < 28) 
+            faceColor = [1 0 0];
+        end
+      %}
         filledCircle(agents(i).position, agents(i).radius, 1000, faceColor);
         %plot(linspace(agents(i).path(1,1),agents(i).path(end,1),50),linspace(agents(i).path(1,2),agents(i).path(end,2),50))
         quiver(agents(i).position(1), agents(i).position(2), agents(i).velocity(1), agents(i).velocity(2), 'Color', [0 0 0]);
         plot(agents(i).path(:, 1), agents(i).path(:, 2), 'Color', lineColor,'LineWidth',1.5);
        
       Xg = [agents(i).initialpos(1) ; agents(i).goal(1)]; 
-      Yg = [agents(i).initialpos(2) ; agents(i).goal(2)]; 
-        plot(Xg,Yg,'b--','LineWidth',0.1);
+      Yg = [agents(i).initialpos(2) ; agents(i).goal(2)];
+      plot(Xg,Yg,'b--','LineWidth',0.1);
+      %{  
+      if length(agents(i).obs) ~= 0 && i == 8
+                for k = 1:length(agents(i).obs)
+                    obstacle = agents(i).obs(k);
+                    tangent(agents(i).position , obstacle.position, agents(i).radius + obstacle.radius , agents(i).radius);
+                    
+                  %  pause;
+                end
+        end
+        
+
+%}
+
+
 %         for j = 1:length(agents)
 %             if (i~=j)%(i==1&&j==4) || (i==4&&j==1)
 %                 vRel = agents(i).velocity - agents(j).velocity;
@@ -39,14 +58,15 @@ function plotSimulation(agents, counter, dt, axisLimits, save)
     title([ 'Time: ' num2str(counter*dt) 's' ])
     set(get(gca, 'XLabel'), 'String', 'X [m]');
     set(get(gca, 'YLabel'), 'String', 'Y [m]');
-    axis(axisLimits)
+  %  set(get(gca),'WindowStyle','docked');
+   % axis(axisLimits)
     axis equal
     hold off
     drawnow
     %
      if save
          
-         saveas(gcf, ['dconfig6/', num2str(counter,'%04.f'), '.png']);
+         saveas(gcf, ['dconfig10.1-joint/', num2str(counter,'%04.f'), '.png']);
          
      end
     %}

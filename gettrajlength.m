@@ -1,4 +1,8 @@
 function sum = gettrajlength(agent)
+% Trajlength - Approximation of trajectory length for comparison | sum of squares of distances between consecutive path points
+%
+% Syntax: sum = gettrajlength(agent)
+%
 path = agent.path;
 length = 0;
 sum = 0;
